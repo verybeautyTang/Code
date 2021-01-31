@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+    <script src="https://cdn.bootcss.com/vue/2.6.10/vue.js"></script>
+    <script>
+        $(function () {
+          const vm= new Vue({
+                el: '#app',
+                data: {
+                    firstName: 'Baby',
+                    lastName: 'Hello',
+                    // fullName1:'Hello Baby',
+                    fullName2:'Hello Baby',
+                },
+                watch:{
+                    lastName:function(value){
+                        this.fullName2=this.firstName+' '+value
+                      
+                    },
+                    firstName:function(value){
+                        this.fullName2=value+' '+this.lastName
+                    }
+                },
+                computed:{
+                    fullName1() {
+                        console.log('fullName1()')
+                      return this.firstName+ ' '+this.lastName
+                    },
+                    fullName3:{
+                        get(){
+                            return this.firstName+ ' '+this.lastName
+                        },
+                        set(value){
+                            var names=value.split(' ');
+                            this.firstName=names[0];
+                            this.lastName=names[1];
+                        }
+                    }
+                }
+            })
+        })
+    </script>
+</head>
+
+<body>
+    <div id="app">
+        姓：<input name="firstName" v-model="firstName">
+        <br>
+        名：<input name="lastName" v-model="lastName">
+        <br>
+        姓名1：<input name="fullName1" v-model="fullName1">
+        <br>
+        姓名2：<input name="fullName2" v-model="fullName2">
+        <br>
+        姓名3：<input name="fullName2" v-model="fullName3">
+        <p>{{fullName1}}</p>
+        <p>{{fullName1}}</p>
+        <p>{{fullName1}}</p>
+        <p>{{fullName1}}</p>
+    </div>
+</body>
+
+</html>

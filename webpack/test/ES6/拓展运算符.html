@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function test(a,b,...rest) {
+      // console.log(a)
+      // console.log(b)
+      console.log(rest)
+    }
+    test(1,2,3,4,5)
+    function demo (a) {
+      console.log(...a)
+    }
+    demo([1,2,3,4,5])
+
+    const aa = [1,2,3]
+    function f(a,b,c) {
+      console.log(a)
+      console.log(b) 
+      console.log(c) 
+    }
+    f(aa[0], aa[1], aa[2])
+
+    f.apply(null, aa)
+  </script>
+</body>
+</html>

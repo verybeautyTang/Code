@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+    <script src="https://cdn.bootcss.com/vue/2.6.10/vue.js"></script>
+    <title>Document</title>
+
+</head>
+
+<body>
+    <div id="app">
+        <button @click="destory">销毁VM</button>
+        <p v-show="show1">我为国家省布料</p>
+    </div>
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                show1: true
+            },
+            mounted() {
+               this.new1= setInterval(() => {
+                    console.log(111)
+                    this.show1 = !this.show1
+                }, 1000)
+            },
+            beforeDestroy(){
+              clearInterval(this.new1)  
+            },
+            methods:{
+                destory(){
+                    this.$destroy()
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

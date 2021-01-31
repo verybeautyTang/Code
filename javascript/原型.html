@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="div">hsy</div>
+  <script>
+    function GetDiv(id) {
+      this.ele = document.getElementById(id)
+    }
+    GetDiv.prototype.html = function (val) {
+      var ele = this.ele
+      if (val) {
+        ele.innerHTML = val
+        return this // 这里方便链式调用
+      } else {
+        return ele.innerHTML
+      }
+    }
+    GetDiv.prototype.on = function (type, fn) {
+      var ele = this.ele
+      ele.addEventListener(type, fn)
+      return this
+    }
+
+    let div1 = new GetDiv('div')
+    console.log(div1);
+    // div1.html('nide')
+    div1.on('click',function() {
+      alert('i am your father')
+    })
+    
+  </script>
+</body>
+
+</html>

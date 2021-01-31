@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 一、创建Object两种方式
+    // 1、new 后面跟Object
+    var p = new Object()
+    p.name = 'hsy'
+    p.age = 22
+
+    // 2、使用对象字面量
+    var person = {
+      name: 'wyx',
+      age: 22,
+      5:'yes' // 这里的5会自动转化成字符串
+    }
+    var personName = 'name'
+    console.log(person['personName']);
+    console.log(p);
+    console.log('person.name:', person.name);
+    console.log('person["name"]:', person["name"]);
+    console.log(person);
+
+    // 函数首选对象字面量[对于灵活的数据结构更合适字面量首选]
+    function ComeDy(data) {
+      var output = ''
+      if (typeof data.name == 'string') {
+        output += 'name:' + data.name +'\n'
+      }
+      if (typeof data.age == 'number') {
+        output += 'age:' + data.age
+      }
+      console.log(output);
+      return output
+    }
+    ComeDy({name:'hsy',age:22})
+
+    // array
+    // 1、用new Array
+    let arr = new Array(20)
+    let arr1 = new Array('hello','boy','nice')
+    console.log(arr);
+    console.log(arr1);
+
+    // 2、直接定义
+    let a1 = [1,1,2,3,4]
+    // 修改
+    a1[5] ='hsy' // 如果多了就是新增
+    a1[2] ='wxy' // 如果少了就是修改
+    console.log(a1);
+
+
+    // 数组转换
+    a1.join(',')
+    console.log(a1);
+
+    let colors = ['red','blue','pink']
+    console.log(colors.join(','));
+    console.log(colors.join('||'));
+    console.log(colors.toString()); // 会将数组中的每个数值都换成字符串的形式
+    console.log(colors.valueOf());
+    console.log(colors);
+    console.log('pop',colors.pop());
+    console.log('push',colors.push());
+
+
+    var p1 = {
+      toLocaleString: function () {
+        return "toLocaleStringhsy"
+      },
+      toString: function () {
+        return 'toStringwyx'
+      }
+    }
+
+    var p2 = {
+      toLocaleString: function () {
+        return 'toLocaleStringname'
+      },
+      toString : function () {
+        return 'toStringage'
+      }
+    }
+    var people = [p1, p2]
+    console.log(people);
+    console.log(people.toString());
+    console.log(people.toLocaleString());
+    
+
+    // 重排序
+    let data =[1,3,6,4,7,9,5,2,10]
+    console.log(data.reverse()); // reverse是反转数组项的数据
+    console.log(data.sort()); // 升序排列[最小的在前面]
+
+    // sort并不是排序的最佳解决方案【因为有时候即使排序没有问题，sort方法也会根据测试字符串的结果改变原来的顺序）
+
+    function compare (value1, value2) { // 方便sort进行正确合理的排序比对
+      return value1- value2
+      // if (value1 < value2) {
+      //   return -1
+      // } else if (value1 >  value2) {
+      //   return 1
+      // } else {
+      //   return 0
+      // }
+    }
+    console.log(data.sort(compare));
+    console.log(data.sort());
+
+    let testData = [1,20,10,15,6]
+    console.log(testData.sort(compare)); // [1,10,15,6]
+
+  </script>
+</body>
+</html>

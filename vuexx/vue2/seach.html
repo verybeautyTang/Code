@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+    <script src="https://cdn.bootcss.com/vue/2.6.10/vue.js"></script>
+    <script>
+        $(function () {
+            var vm = new Vue({
+                el: '#app',
+                data: {
+                    persons: [{
+                            name: 'hs',
+                            age: '15'
+                        },
+                        {
+                            name: 'hsy',
+                            age: '23'
+                        },
+                        {
+                            name: 'xbb',
+                            age: '12'
+                        },
+                        {
+                            name: 'xxes',
+                            age: '33'
+                        }
+                    ],
+                    seachName: '',
+                    pailie: 'A',
+
+                },
+                computed: {
+                    filterPerson() {
+                        const {
+                            seachName,
+                            persons,
+                            pailie
+                        } = this;
+                        let filterP = '';
+                        filterP = persons.filter(p => p.name.indexOf(seachName) !== -1)
+                        if (pailie !== 'A') {
+                        filterP.sort(function (p1, p2) {
+                          
+                                if(pailie=='B'){//为负数则是p1在前面，为正数则是p2在前面
+                                    return p1.age-p2.age
+                                }
+                                else{
+                                    return p2.age-p1.age
+                                }
+                            
+                        })
+                    }
+                        return filterP;
+                    }
+                },
+                methods:{
+                    setP(pailie){
+                        this.pailie=pailie
+                    }
+                }
+            })
+        })
+    </script>
+
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" v-model="seachName">
+        <ul>
+            <li v-for="(item,index) in filterPerson" :key="index">{{item.name}}---{{item.age}}
+            </li>
+        </ul>
+        <button @click="setP('B')">升序排列</button>
+        <button @click="setP('C')">降序排列</button>
+        <button @click="setP('A')">原本排列</button>
+    </div>
+</body>
+
+</html>

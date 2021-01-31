@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+  <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.10.0/jquery.js"></script>
+  <script src="https://cdn.bootcdn.net/ajax/libs/vue/0.12.0/vue.js"></script>
+  <!-- <script src="https://cdn.bootcdn.net/ajax/libs/vue/0.11.8/vue.min.js"></script> -->
+<body>
+  <div id="app">
+    <p>{{message}}</p>
+    <p v-if="seen">你康康呢</p>
+    <p v-for="item in todos">{{item.text}}</p>
+    <todos v-for="item in todos" :todo="item" :key="item.id"></todos>
+  </div>
+</body>
+
+<script>
+  Vue.component('todos', {
+    props:'todo',
+    template: '<p>{{todo.text}}</p>'
+  })
+  new Vue ({
+    el: '#app',
+    data () {
+      return {
+        message: 'nihao',
+        todos:[
+          {
+            text:'11111',
+            id:0
+          },
+          {
+            text: '22222',
+            id: 1
+          },
+          {
+            text: '33333',
+            id: 2
+          }
+        ],
+        seen: true
+      }
+    }
+  })
+  
+</script>
+</html>

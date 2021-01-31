@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    let data = [1,2,3,4,5,6,7]
+    let data1 = []
+
+    // every:判断数组里面的每一个字段是不是都符合条件，其中一个不符合就返回FALSE，只有全部都符合条件就返回TRUE
+    let dome = data.every(item => item>0)
+    // 如果every是一个空数组，则一直就返回true
+    let deme1 = data1.every(item => item > 999)
+    console.log(dome)
+    console.log(deme1)
+    // 一般情况下every不会影响原数组
+
+    // some:判断数组里面的其中一个字段是否符合条件，其中一个符合就返回TRUE，全部不符合返回FALSE
+    let someDemo = data.some (item => item>3)
+    console.log(someDemo)
+    // 如果是一个空的数组，就一直返回true
+    let someDemo1 = data1.some(item => item >7)
+    console.log(someDemo1)
+
+    // copyWithin:将指定位置的数据复制到指定的位置上[第一个参数是target的个数，第二个参数是元素复制的起始位置，第三个是停止复制的位置]
+    let test = ['hsy','h','s','y']
+    test.copyWithin(2,0,2)
+    // copyWithin：会将原来的数组改变
+    console.log(test)
+    
+    let test1 = ['hsy', 'h', 's', 'y']
+    // entires:将数组变成一个可迭代对象
+    test1.entries()
+    console.log(test1)
+
+    //filter: 查找数组中符合条件的数据并返回，不会影响之前的数据
+    let filter = data.filter(item =>item>4)
+    console.log(filter)
+
+    // find: 查找数组中符合条件的第一条数组并返回，如果没有返回数据就返回undefined
+    let find = data.find(item => item > 4)
+    console.log(find) 
+
+    // findIndex: 查找数组中符合条件的第一条数组的索引并返回
+    let findIndex = data.findIndex(item => item > 4)
+    console.log(findIndex) 
+
+    // 
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 函数实际上是对象，每个函数都是Function的实例 -->
+  <!-- 函数名是指向函数对象的指针，因此函数名与包含对象的变量没有什么区别 -->
+  <!-- 换句话说，一个函数可以有多个名称 -->
+  <script>
+    // 函数声明解析器会率先执行，这里的js函数提升到了首部
+    console.log(sum(1,45)) 
+    function sum(num1, num2) {
+      return num1 + num2
+    }
+    let summer = sum
+    console.log(summer(1,1))
+    //  函数表达式是解析器解析到所在的代码行之后才执行
+    // 如果执行了函数表达式则会报错，原因是函数是位于一个初始化数据中，而不是一个函数声明
+    // 在执行函数所在的语句之前，函数表达式不会保存对函数的引用
+    // 所以会报错
+    var icon = function (x,y) {
+      return x*y
+    }
+      // alert(icon(2, 3))
+
+
+      // 函数中有两个属性 this 和arguments
+      // arguments保存函数的所有参数，arguments还有自己的属性为callee
+      // callee指向拥有arguments对象的函数
+      function  factory(num) {
+        if (num <=1) {
+          return 1
+        } else {
+          // return num * factory(num -1 )
+          console.log(arguments);
+          console.log(arguments.callee);
+          return num * arguments.callee(num - 1)
+        }
+      }
+      console.log(factory(5));
+
+      // 函数的另一个属性 caller:这个属性保存着调用当前函数的函数的引用
+      function outer() {
+        inner()
+      }
+      function inner() {
+        console.log(inner.caller);
+      }
+      outer()
+      // 严格模式下
+      // arguments.callee会出错，并且在严格模式下，不允许为caller属性赋值，
+      // 目的是为了第三方代码不能在相同的环境里面窥视其它代码
+
+      // 函数的属性与方法：函数包含两个属性[length、prototype]
+      // length：接收命名参数的个数
+      // prototype:保存所有实例方法的地址
+      //1、 length
+      function sayName(itrm,index) {
+        console.log('111');
+      }
+      function sayAge() {
+        console.log(222);
+      }
+      function saySex(item) {
+        console.log(333);
+      }
+      console.log(sayName.length);
+      console.log(sayAge.length);
+      console.log(saySex.length);
+      // 每个函数都有非继承来的call apply，这两个方法的用途都是在特定的作用域中调用函数，
+      // 实际上等于设置函数体内this的对象的数值
+  </script>
+</body>
+</html>

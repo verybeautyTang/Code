@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- console.trace():不用打debugger 用于追踪代码的调用栈，不用专门断点去看了-->
+  <script>
+    console.trace()
+      function foo() {
+        let a = 2
+        console.trace(foo)
+      }
+      foo()
+  </script>
+</body>
+</html>

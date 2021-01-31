@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0 auto;
+      padding: 0;
+    }
+    body {
+      display: flex;
+      background: #000000;
+      color:#ffff;
+      justify-content: center;
+      align-items:center;
+      height: 100vh;
+    }
+    .wave {
+      position: relative;
+      -webkit-box-reflect: below 2px linear-gradient(transparent,rgba(255,255,255,0.2))
+    }
+    .wave span {
+      position: relative;
+      display: inline-block;
+      color: #fff;
+      font-size: 2em;
+      animation: animate 1s ease-in-out  infinite;
+      animation-delay: calc(.1s*var(--i))
+    }
+    @keyframes animate {
+      0%{
+        transform: translateY(0px);
+      }
+      20% {
+        transform: translateY(30px);
+      }
+      40%,100% {
+        transform: translateY(0px);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wave">
+    <span style="--i:1">你</span>
+    <span style="--i:2">好</span>
+    <span style="--i:3">啊</span>
+    <span style="--i:4">这</span>
+    <span style="--i:5">个</span>
+    <span style="--i:6">世</span>
+    <span style="--i:7">界</span>
+    <span style="--i:8">。</span>
+  </div>
+</body>
+</html>

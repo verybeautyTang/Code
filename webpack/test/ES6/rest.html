@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script> 
+  function arg() {
+    console.log(arguments);
+  }
+  arg(1,2,3,4,5,6,7)
+
+  function rest (...rest) {
+    console.log(rest)
+  }
+  rest (9,8,7,6,5,4,3,2,1)
+
+  function demo (a,b,...rest) {
+    console.log(a,b,rest);
+  }
+  demo (1,2,3,45,56,3453,346,45)
+  </script>
+</body>
+</html>

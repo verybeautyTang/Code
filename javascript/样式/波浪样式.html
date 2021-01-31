@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>波浪效果</title>
+</head>
+<style>
+  *{
+  margin: 0;
+  padding: 0;
+  font-family: "微软雅黑"
+}
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: #000;
+}
+.wavy{
+  position: relative;
+  /* 倒影 */
+  /* box-reflect属性值有：dirrection-方向:above向上，below向下，left向左，right向右。 */
+  /* offset距离：可以是数值，也可以是百分比： */
+  -webkit-box-reflect: below -12px linear-gradient(transparent, rgba(0, 0, 0, 0.2)) 
+}
+.wavy span{
+  position: relative;
+  display: inline-block;
+  color: #fff;
+  font-size: 2em;
+  animation: animate 1s ease-in-out infinite;
+  /* css中用var定义的属性必须--开头 */
+  animation-delay: calc(.1s*var(--j)) ;
+}
+
+@keyframes animate{
+  0%{
+    transform: translateY(0px)
+  }
+  20%{
+    transform: translateY(24px)
+  }
+  40%, 100%{
+    transform: translateY(0px)
+  }
+}
+</style>
+<body>
+  <div class="wavy">
+<span style="--j:1">内</span>
+<span style="--j:2">容</span>
+<span style="--j:3">加</span>
+<span style="--j:4">载</span>
+<span style="--j:5">中</span>
+<span style="--j:6">.</span>
+<span style="--j:7">.</span>
+<span style="--j:8">.</span>
+  </div>
+</body>
+</html>

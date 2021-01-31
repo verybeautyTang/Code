@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title> 
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+    <script src="https://cdn.bootcss.com/vue/2.6.10/vue.js"></script>
+    <script>
+    $(function(){
+        var vm=new Vue({
+            el:'#app',
+            data:{
+                persons:[
+                    {
+                        name:'贺诗雨',age:'23'
+                    },
+                    {
+                        name:'贺诗雨1',age:'231'
+                    },
+                    {
+                        name:'贺诗雨2',age:'232'
+                    },
+                    {
+                        name:'贺诗雨3',age:'233'
+                    }
+                ]
+            },
+            methods:{
+                delet(index){
+                    this.persons.splice(index,1)
+                },
+                update(index,val){
+                    this.persons.splice(index,1,val)
+                }
+            }
+        })
+    })</script>
+
+</head>
+<body>
+    <div id="app">
+       <ul>
+           <li v-for="(item,index) in persons" :key="index">{{item.name}}---{{item.age}}
+                ---<button @click="update(index,{ name:'贺诗雨4',age:'234' })">修改</button>--- <button @click="delet(index)">删除</button>
+           </li>
+           
+        </ul>
+       <ul>
+           <li v-for="(item,key) in persons[2]" :key="key">
+               {{key}}---{{item}}
+           </li>
+       </ul>
+    </div>
+</body>
+</html> 

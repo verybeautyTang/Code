@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 根据Map获取缓存
+    const dataCache = new Map ()
+    async getKeys() {
+      let key = 'keys' 
+      let data = dataCache.get(key)  // 判断map中是否存在key的字段
+      if (!data) { // 如果不存在则去请求数据，并将获得的数据保存到缓存里面
+        const result = await request.get ('/newPromise')
+        
+        data = '....'
+        dataCache.set(key,data)
+      }
+      return data
+    }
+    // 该方法存在的问题：有多个请求则每次都还是会去请求
+  </script>
+</body>
+</html>

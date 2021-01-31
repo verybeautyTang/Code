@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .ami1-enter-active,
+        .ami1-leave-active {
+            transition: opacity 1s;
+        }
+
+        .ami1-enter,
+        .ami1-leave-to {
+
+            opacity: 0;
+        }
+
+        .ami2-enter-active,
+        .ami2-leave-active {
+            transform: translateX(-20px);
+            transition: opacity 1s ease;
+        }
+
+        .ami2-enter,
+        .ami2-leave-to {
+            transform: translateX(20px);
+            opacity: 0;
+        }
+         .ami3-enter-active,
+        .ami3-leave-active {
+            animation:  scale-in 1s;
+        }
+
+        .ami3-enter,
+        .ami3-leave-to {
+            animation:  scale-in 1s;
+        }
+        @keyframes scale-in {
+            0% {
+                transform: scale(0);
+            }
+
+            50% {
+                transform: scale(1.5);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+    </style>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+    <script src="https://cdn.bootcss.com/vue/2.6.10/vue.js"></script>
+    <script>
+        $(function () {
+            const vm = new Vue({
+                el: '#app',
+                data: {
+                    show: true
+                },
+                methods: {
+                    animation1() {
+                        this.show = !this.show
+                    }
+                }
+            })
+            const vm1 = new Vue({
+                el: '#app1',
+                data: {
+                    show: true
+                },
+                methods: {
+                    animation2() {
+                        this.show = !this.show
+                    }
+                }
+            })
+            const vm2 = new Vue({
+                el: '#app2',
+                data: {
+                    show: true
+                },
+                methods: {
+                    animation3() {
+                        this.show = !this.show
+                    }
+                }
+            })
+        })
+    </script>
+</head>
+
+<body>
+    <div id="app">
+        <button @click="animation1">动画1</button>
+        <transition name="ami1">
+            <p v-show="show">你好，我觉得你可以不安话</p>
+        </transition>
+    </div>
+    <div id="app1">
+        <button @click="animation2">动画2</button>
+        <transition name="ami2">
+            <p v-show="show">你好，我觉得你可以不安话2</p>
+        </transition>
+    </div>
+    <div id="app2">
+        <button @click="animation3">动画3</button>
+        <transition name="ami3">
+            <p v-show="show">你好，我觉得你可以不安话3</p>
+        </transition>
+    </div>
+</body>
+
+</html>

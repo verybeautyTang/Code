@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //  console.count:
+    //顾名思义。。计数,可以用来统计某个函数的执行次数，也可以传入一个参数，并且根据传入的参数分组统计调用的次数
+    function foo (type = '') {
+      type ? console.count(type) : console.count()
+      return 'type：' + type
+    }
+    foo('A') // A:1
+    foo('A') // A:2
+    foo('A') // A:3
+    foo('B') // B:1
+    foo()  // default: 1
+    foo()  // default: 2
+    foo()  // default: 3
+  </script>
+</body>
+</html>

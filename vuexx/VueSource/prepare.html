@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<!-- 1. [].slice.call(lis): 将伪数组转换为真数组
+2. node.nodeType: 得到节点类型
+3. Object.defineProperty(obj, propertyName, {}): 给对象添加属性(指定描述符)
+4. Object.keys(obj): 得到对象自身可枚举属性组成的数组
+5. obj.hasOwnProperty(prop): 判断prop是否是obj自身的属性
+6. DocumentFragment: 文档碎片(高效批量更新多个节点) -->
+<body>
+    <ul>
+        <li>你好我我bog1</li>
+        <li>你好我我bog2</li>
+        <li>你好我我bog3</li>
+    </ul>
+    <script>
+        //  1. [].slice.call(lis): 将伪数组转换为真数组
+        const lis=document.getElementsByTagName('li')
+        console.log(lis instanceof Array, lis[1].innerHTML, lis.forEach)
+        const lis2 = Array.prototype.slice.call(lis)
+        console.log(lis2 instanceof Array, lis2[1].innerHTML, lis2.forEach)
+        // Object.defineProperty(obj, propertyName, {}): 给对象添加属性(指定描述符)
+        const obj = {
+            FirstName : 'A',
+            LastName : 'B'
+        }    //defineProperty 
+        
+        Object.defineProperty(obj, "FullName",{
+            enumerable : true,
+            configurable : true,
+            get: function () {
+                return this.FirstName + '-' + this.LastName
+            },
+            set: function (value) {
+                const names = value.splice('-')
+                this.FirstName = names[0]
+                this.LastName = names[1]
+            }
+        })
+        console.log(obj.FullName)
+    </script>
+
+</body>
+</html>

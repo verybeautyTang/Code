@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+    <script src="https://cdn.bootcss.com/vue/2.6.10/vue.js"></script>
+    <script>
+        $(function () {
+            const vm = new Vue({
+                el: '#app',
+                methods: {
+                    text1() {
+                        alert('你好')
+                    },
+                    text2(event){
+                        alert(event.target.innerText)
+                    },
+                    text3(msg,event){
+                        alert(msg+'-----'+event.target.innerText)
+                    },
+                    clickMe1(){
+                        alert('我是父亲，我其实不应该出现')
+                    },
+                    clickMe2(event){
+                        // event.stopPropagation();
+                        alert('我是孩子，我应该出现在这里')
+                    },
+                    tiaozhuan(event){
+                        // event.preventDefault();
+                        alert('我要走了')
+                    },
+                    keyup(event){
+                        // if(event.keyCode===13){
+                        //     alert(event.target.value)
+                        // }
+                        alert(event.target.value)
+                    }
+                }
+            })
+
+        })
+    </script>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 普通的事件绑定 -->
+        <button @click="text1">我是按键1</button>
+        <button @click="text2">我是按键2</button>
+        <button @click="text3('nihao',$event)">我是按键3</button>
+        <!-- 事件绑定 -->
+        <div @click="clickMe1" style="width: 200px;height: 200px;background-color: blueviolet;">
+            点击我1
+            <div @click.stop="clickMe2" style="width: 100px;height: 100px;background-color:pink">
+                点击我2
+            </div>
+           
+        </div> <a href="http://www.baidu.com" @click.prevent="tiaozhuan">跳转</a>
+        <!--其他事件绑定 -->
+        <input type="text" name="" id="" @keyup.enter="keyup">
+    </div>
+</body>
+
+</html>

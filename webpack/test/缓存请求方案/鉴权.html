@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+</body>
+  <script>
+    let email = '353332175@qq.com'
+    let password = 'hl123123'
+    let auth = `${email}:${password}`
+    const buff = Buffer.from(auth, 'ascii')
+    console.info(buff.toString('base64'))
+  </script>
+</html>

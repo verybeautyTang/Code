@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title> 
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+    <script src="https://cdn.bootcss.com/vue/2.6.10/vue.js"></script>
+    <script>
+    $(function(){
+        var vm=new Vue({
+            el:'#app',
+            data:{
+                a:'class1',
+                b:'class2',
+                c:'class3'
+            }
+        })
+    })</script>
+    <style>
+        .class1{
+            color: rebeccapurple;
+            font-size: 40px;
+            background-color: aquamarine;
+        }
+        .class2{
+            background-color: rebeccapurple;
+            font-size: 40px;
+           color: aquamarine;
+        }
+        .class3{
+            border: 10px solid;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <p class="nihao" :class="a">你好啊，月</p>
+        <p class="wohao" :class="{class2:true,class1:false}">我不是i和那</p>
+        <p :class="[a,c]">s就开始的话</p>  
+    </div>
+</body>
+</html> 

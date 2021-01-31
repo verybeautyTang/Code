@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_1356455_c5d3d3ohlbq.css">
+  <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.10.0/jquery.min.js"></script>
+  <style>
+    /* 去掉input原生的css样式 */
+    input {
+      border:none;
+      outline:none;
+      cursor: pointer;
+      -webkit-appearance:none;
+    }
+    .rankAll {
+      width: 300px;
+      display: flex;
+      flex-flow: row-reverse;
+    }
+    /* 导入iconfont */
+    .rankAll input[name = "rate"] {
+      font-family: 'iconfont';
+      font-size: 30px;
+      padding-left: 30px;
+    }
+    /* 引入全局变量css */
+    :root {
+    /*高亮颜色*/
+      --main: #ffa822;
+      /*默认颜色*/
+      --basic: #999;
+    }
+    input[name = "rate"]::after{
+      content:'\e645';
+      color: var(--basic);
+      transition: color .4s ease;
+    }
+    /* 选中的情况 */
+    input[name = "rate"]:checked::after,
+    input[name = "rate"]:checked ~ input[name = "rate"]::after{
+      content:'\e73c';
+      color:var(--main);
+    }
+
+
+  </style>
+</head>
+<body>
+  <div class="rankAll">
+    <input type="radio" name="rate" id="">
+    <input type="radio" name="rate" id="">
+    <input type="radio" name="rate" id="">
+    <input type="radio" name="rate" id="">
+    <input type="radio" name="rate" id="">
+    <div></div>
+  </div>
+</body>
+
+<script>
+  $(function() {
+    let old = null
+      $("input").click(function() {
+        console.log(this)
+        if(this.checked == old) {
+          this.checked = !this.checked
+          old = this.checked
+        }
+        else{
+          old = this.checked
+        }
+    })
+  })
+</script>
+</html>

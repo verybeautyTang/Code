@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    let data = 'someone like you'
+    let setData = data.substring(2)
+    // data = null
+    data.color = 'red'  // 已经被销毁
+    console.log(data.color); 
+    console.log(setData);
+
+    // 
+    let obj = new Object(new Date())
+    const strObj = new String('123')
+    console.log(Object.prototype.toString.call(new Date()));
+    console.log(Object.prototype.toString.call(obj));
+    console.log(obj instanceof Date);
+    console.log(typeof obj);
+    // 拿到对象的__proto__属性与类的prototype属性做对比
+    console.log(obj.__proto__ === Date.prototype);
+
+    function object(name) {
+      const obj = {}
+      obj.name = name
+      obj.__proto__ = object.prototype
+      return obj
+    }
+
+    object.prototype.test = function() {
+      console.log(test);
+    }
+
+    console.log(object('hsy'));
+
+
+    let value = 'happy'
+    let string = String(value)
+    console.log(typeof string);// string
+    let object1 = new String (value)
+    console.log('object1',typeof object1);
+  </script>
+</body>
+</html>

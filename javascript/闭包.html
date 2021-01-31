@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 闭包实现阶乘
+    function sum(add) {
+      if (add == 1) {
+        return add 
+      } else {
+        return sum(add-1) * add
+      }
+    }
+    console.log(sum(5));
+
+    // 三点运算符实现累加
+    function add(...data) {
+      let sum = 0
+      data.forEach(i => {
+        sum += i
+      })
+      return sum
+    }
+    console.log(add(1, 2, 3, 4, 5));
+  </script>
+</body>
+</html>

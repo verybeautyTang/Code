@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    let data = [123,222,3444,43,553,63,72,9,210] // 有序数列
+    // function betree(data,target) {
+    //   let start = 0
+    //   let end = data.length - 1 
+    //   while (start<= end) {
+    //     let middle = parseInt((start + end) / 2)
+    //     if (data[middle] == target) {
+    //       console.log(middle);
+    //       return middle
+    //     } else if (data[middle] > target) {
+    //       end = middle - 1
+    //     } else if(data[middle] < target){
+    //       start = middle + 1
+    //     } else{
+    //       return 0
+    //     }
+    //   }
+    // }
+    // betree([1, 2, 3, 4], 3)
+    // betree([1, 2, 3], 3)
+
+    function binarySearch(data, target) {
+      var len = data.length
+      var left = 0
+      var right = len - 1
+      var middle = Math.floor((right + left) / 2)
+
+      while (left <= right) {
+        middle = Math.floor((right + left) / 2)
+        if (data[middle] < target) {
+          left = middle + 1
+        } else if (data[middle] > target) {
+          right = middle - 1
+        } else if (data[middle] == target) {
+          return middle
+        }
+      }
+      return 'nothing'
+    }
+    console.log(data.sort((a, b) => a - b));
+    console.log(binarySearch(data.sort((a, b) => a - b), 3444));
+  </script>
+</body>
+</html>

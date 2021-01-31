@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+  <script src="https://cdn.bootcdn.net/ajax/libs/vue/0.12.0/vue.js"></script>
+<body>
+  <div id="app">
+    {{a}}
+    <p>{{c}}</p>
+    <button @click ="freezeIt">clickMe</button>
+  </div>
+</body>
+
+<script>
+  // let data ={a:1}
+  // let data1 ={c:22}
+  // var vm = new Vue ({
+  //   el:'#app',
+  //   data:data,
+  // })
+  // ///设置 property 也会影响到原始数据
+  // vm.a ='2222' // vm相当于Vue的实例， vm.a 相当于data.a
+  // // 反之，设置data的数据也是这样的
+  // data.a = '3333' 
+  // // b不会显示，因为vue响应式只存在与数据再data里面。[实例被创建时数据在data里面才能进行实时更新]
+  // vm.b= '2222'
+
+
+  
+  // // 使用object.freeze会导致data里面的数据不被实时更新，无法改变其中的property
+    let data1 = { c: 22 }
+      var vm1 = new Vue({
+        el: '#app',
+        data: data1,
+        methods : {
+          freezeIt () {
+            this.data1.c= '222222'
+          }
+        }
+      })
+      Object.freeze(data1)
+</script>
+</html>

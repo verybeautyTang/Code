@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    let obj = {
+      name:'data',
+      state:['111','222','333','444','555'],
+      [Symbol.iterator]:function () {
+        let index = 0
+        let _this = this
+        return {
+          next () {
+            if(index < _this.state.length) {
+              let result = {
+                value:_this.state[index],
+                done:false
+                }
+              index = index + 1
+              return result
+            } else {
+              return { value: undefined, done: true }
+            }
+          }
+        }
+      }
+    }
+    for(let v of obj) {
+      console.log(v)
+    }
+  </script>
+</body>
+</html>

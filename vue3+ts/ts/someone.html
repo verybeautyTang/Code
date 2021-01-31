@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+  function fff(x) {
+      // y is an Array
+      return x * (arguments.length <= 1 ? 0 : arguments.length - 1);
+    }
+
+    console.log(fff(3, "hello", true));
+  </script>
+</body>
+</html>

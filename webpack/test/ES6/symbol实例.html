@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    let  go = {
+      name:'愤怒的小鸟',
+      up:function () {
+        console.log('我要飞出去了')
+      },
+      down: function () {
+        console.log('我不管我就要下来')
+      }
+    }
+    methods = {
+      up: Symbol(),
+      down: Symbol()
+    }
+    go[methods.up] = function () {
+      console.log('我是Symbol的上升哦')
+    }
+    go[methods.down] = function () {
+        console.log('我是Symbol的下降哦')
+      }
+    console.log(go)
+
+    let name = {
+      name:'name',
+      [Symbol('say')]: function() {
+        console.log('sya')
+      },
+      [Symbol('talk')]: function() {
+        console.log('talk');
+      }
+    }
+    console.log(name)
+  </script>
+</body>
+</html>

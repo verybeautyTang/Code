@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+
+<body>
+  <!-- 模板页面 -->
+  <template id="userCardTemplate">
+    <style>
+      .image {
+        width: 100px;
+      }
+
+      .container {
+        background: #eee;
+        border-radius: 10px;
+        width: 500px;
+        padding: 20px;
+      }
+    </style>
+    <div class="container">
+      <p>Hello World</p>
+      <p class="name" data-open="true">{{name}}</p>
+      <p class="email">{{email}}</p>
+      <input type="text" v-model="message">
+      <span>{{message}}</span>
+      <button class="button">Follow</button>
+    </div>
+  </template>
+  <!-- 自定义组件 -->
+  <user-card></user-card>
+  <script>
+    // 自定义组件
+    class UserCard extends HTMLElement {
+      constructor() {
+        super()
+        var tempId = document.getElementById('userCardTemplate')
+        var content = tempId.content.cloneNode(true)
+        this.appendChild(content)
+        this._data = {
+          name: 'UserName',
+          email: '35333175@qq.com',
+          message: 'model'
+        }
+        compileNode(this)
+      }
+    }
+    window.customElements.define('user-card', UserCard);
+    function compileNode(el) {
+        let child = el.childNodes;//获取到所有的子元素
+        [...child].forEach((node) => {//利用展开运算符直接转换成数组然后forEach
+          if (node.nodeType === 3) {//判断是文本节点，于是直接正则伺候
+            let text = node.textContent;
+            let reg = /\{\{\s*([^\s\{\}]+)\s*\}\}/g;
+            //大概的意思就是匹配前面有两个{{,后面也有两个}}的这么一串文本
+            if (reg.test(text)) {//如果能找到这样的字符串
+              let $1 = RegExp.$1;//那就把里面的内容拿出来，比如‘name’
+              this._data[$1] && (node.textContent = text.replace(reg, this._data[$1]));//看看数据里面有没有name这么个东西，如果有，那就把数据里面name对应的值填到当前这个位置。
+
+              //增加了事件监听，监听每一个匹配到的数据，并且再一次更新视图
+              //注意这里的e.detail是上面observe里面的自定义事件传过来的
+              this.addEventListener($1, (e) => {
+                node.textContent = text.replace(reg, e.detail)
+              })
+            };
+          }
+        })
+      }
+
+      function observe() {
+          let _this = this;
+          this._data = new Proxy(this._data, {//监听数据
+            set(obj, prop, value) {//数据改变的时候会触发set方法
+              //事件通知机制，发生改变的时候，通过自定义事件通知视图发生改变
+              let event = new CustomEvent(prop, {
+                detail: value//注意这里我传了个detail过去，这样的话更新视图的时候就可以直接拿到新的数据
+              });
+              _this.dispatchEvent(event);
+              return Reflect.set(...arguments);//这里是为了确保修改成功,不写其实也没关系
+            }
+          });
+        }
+
+        let card = document.querySelector('user-card');
+          document.onclick = function () {
+            console.log('点击了');
+            card._data.name = '新的用户名';
+          }
+  </script>
+</body>
+
+</html>

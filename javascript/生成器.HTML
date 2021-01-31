@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //生成器是 ECMAScript 6 新增的一个极为灵活的结构，拥有在一个函数块内暂停和恢复代码执行的能力
+    // 生成器的形式是一个函数，函数名称前面加一个星号（ * ）表示它是一个生成器。只要是可以定义
+    // 函数的地方，就可以定义生成器
+    // 箭头函数不能作为生成器使用
+    function * genartion() {
+      return 'hsy'
+      // console.log('nice');
+
+    }
+    const g = genartion ()
+    console.log(g);
+    console.log(g.next());
+    console.log(genartion()[Symbol.iterator]);
+    let fn = function* () {
+      
+    }
+    let foo = {
+      * genartion () {
+
+      }
+    }
+  </script>
+</body>
+</html>

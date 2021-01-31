@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    const obj = {
+      f () {
+        console.log('obj')
+      }
+    }
+    const test = {
+      f:function() {
+        console.log('test')
+      }
+    }
+    const demo = {
+      f : () => {
+        console.log('demo')
+      }
+    }
+    new test.f() //test
+    new obj.f() //Uncaught TypeError: obj.f is not a constructor
+    new demo.f() //Uncaught TypeError: demo.f is not a constructor
+  </script>
+</body>
+</html>

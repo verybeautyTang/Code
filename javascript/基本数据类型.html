@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var a = 10;
+    var b = a;
+    console.log(a, b);
+    a = 110
+    console.log(a,b);
+
+
+    var data ={
+      a: 100
+    }
+    var p = data
+    console.log(p, data);
+    data.a = 111
+    console.log(p, data);
+
+
+    // 引用类型可以无限的控制与添加属性
+    // 函数、引用类型
+
+    console.log('null', typeof null);
+    console.log('undefined', typeof undefined);
+    console.log('function', typeof Function);
+    console.log('number', typeof 11);
+    console.log('object', typeof object);
+    console.log('string', typeof 'niceAAA');
+    console.log('object', typeof {});
+    console.log('array', typeof []);
+
+    // typeof只可以用来区分值类型而无法区分引用类型 
+
+    var add = 10
+     
+  </script>
+</body>
+</html>

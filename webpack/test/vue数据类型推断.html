@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 数据类型推断
+    var _toString = Object.prototype.toString;
+    function typeInfo(value) {
+      console.log(_toString.call(value).slice(8, -1));
+      return _toString.call(value).slice(8, -1)
+    }
+    typeInfo({})
+    typeInfo([])
+    typeInfo('你好')
+
+    // 只执行一次[可以采用闭包的形式]
+    function once (fn) {
+      var called = false
+      return function () {
+        if (!called) {
+          called = true
+          fn.apply(this,argument)
+        }
+      }
+    }
+    function test() {
+      let i = 0;
+      i = i + 1;
+      console.log(i)
+    }
+    once(test())
+  </script>
+</body>
+</html>

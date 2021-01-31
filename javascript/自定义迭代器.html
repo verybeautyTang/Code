@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 迭代器就是用来迭代器就是为实现对不同集合进行统一遍历操作的一种机制，
+    // 只要给需要遍历的数据结构部署Iterator接口，通过调用该接口，或者使用消耗该接口的API实现遍历操作。
+    class Counter {
+      constructor (limit) {
+        this.limit = limit
+      }
+      
+      [Symbol.iterator] () {
+        // return this
+        let count = 1,limit =this.limit
+        return  {
+          next() {
+            if (count <= limit) {
+              return { done: false, value: count++ }
+            } else {
+              return { done: true, value: undefined }
+            }
+          },
+          // 提前退出的情况
+          //可选的 return() 方法用于指定在迭代器提前关闭时执行的逻辑。
+          // 可能的情况有：1、for-of 循环通过 break 、 continue 、 return 或 throw 提前退出；
+          // 2、解构操作并未消费所有值。
+          return() {
+            console.log('Exiting early');
+            return { done: true };
+          }
+        }
+      }
+    }
+  let counter = new Counter(3)
+  for (i of counter) {
+    if (i>2) {
+      break;
+    }
+    console.log(i);
+  }
+  for (i of counter) {
+      console.log(i);
+    }
+  </script>
+</body>
+</html>

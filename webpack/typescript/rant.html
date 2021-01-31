@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_1356455_c5d3d3ohlbq.css">
+  <style>
+    /* 去掉默认样式 */
+    input {
+      -webkit-appearance: none;
+      border: none;
+      outline: none;
+      cursor: pointer;
+    }
+    /* :root是css选择器，作用在于匹配文档的根元素，在HTML中，根元素永远是html标签 */
+    /* 作用：声明css的全局变量 */
+    /* --前缀的形式是代表具有值得自定义的属性，可以通过var函数在全文档范围内复用。 */
+    :root {
+      /*高亮颜色*/
+      --main: #ffa822;
+      /*默认颜色*/
+      --basic: #999;
+    }
+    .rate-content input[name="rate"] {
+      font-family: "iconfont";
+      /*之前引入的iconfont字体*/
+      font-size: 30px;
+      padding-right: 10px;
+    }
+    .rate-content input[name="rate"]::after {
+      content: "\e645";
+      color: var(--basic);
+      /*加点颜色过渡效果*/
+      transition: color .4s ease;
+    }
+    /* input[name="rate"]:checked::after {
+      color: var(--main);
+      content:'\e73c';
+    } */
+    input[name = "rate"]:checked::after,
+    input[name = "rate"]:checked~input[name = "rate"]::after {
+        color: var(--main);
+        content:'\e73c';
+    }
+  .rate-content {
+    display: flex;
+    flex-flow: row-reverse;
+  }
+  </style>
+<body>
+  <div class="rate-content">
+    <input type="radio" name="rate" id="">
+    <input type="radio" name="rate" id="">
+    <input type="radio" name="rate" id="">
+    <input type="radio" name="rate" id="">
+    <input type="radio" name="rate" id="">
+  </div>
+</body>
+</html>

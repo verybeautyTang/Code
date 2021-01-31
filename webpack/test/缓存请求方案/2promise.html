@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var dataCache = new Map();
+    getWare () {
+      const key = 'keys'
+      let promise = dataCache.get(key)
+      if (!promise) {
+        promise = request.get('./hello').then(res => {
+          //代码代码
+        }).catch(err => {
+          // 在请求回来后，如果出现问题，把promise从cache中删除 以避免第二次请求继续出错S
+          dataCache.delete(key)
+          return Promise.reject(err)
+        });
+      }
+    }
+    // 调用方式
+    getWare().then('...')
+  </script>
+</body>
+</html>

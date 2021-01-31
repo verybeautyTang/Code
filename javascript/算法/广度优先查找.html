@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 广度优先查找实际上就是先找子节点、再找孙节点，直到找到或者找完为止
+    // 假设现在有一个图 是这样子的
+    // A-->B A-->C  A-->D  A-->E
+    // B-->F
+    // C-->H C-->I C-->G
+    // D
+    // E-->K  E-->L
+    
+    // 步骤一,将所有的用户的邻居都分别写出来
+    let data = {}
+    data['A'] = ['B', 'C', 'D', 'E']
+    data['B'] = ['F']
+    data['C'] = ['H', 'I', 'G']
+    data['D'] = []
+    data['E'] = ['K', 'L']
+
+
+    function Node(name, children) {
+      this.name = name
+      this.children = children
+    }
+
+    var f = new Node('F')
+    var h = new Node('H')
+    var i = new Node('I')
+    var g = new Node('G')
+    var k = new Node('K')
+    var l = new Node('L')
+
+
+    var b = new Node('B', [f])
+    var c = new Node('C', [h,i,g])
+    var d = new Node('D', [])
+    var e = new Node('E', [k, l])
+
+    var a = new Node('A', [b,c,d,e])
+    console.log(a);
+
+    function Iterator(node) {
+      var cache = [node]
+      var n 
+      while (n = cache.shift()) {
+        n.children && n.children.forEach(c => {
+          console.log(c);
+          cache.push(c)
+        })
+      }
+    }
+    Iterator(a);
+    // 将你以及你得邻居都放在里面
+    function sreachItem(name) {
+      let queen = {}
+      queen = data[name]
+      console.log(queen);
+      // queen.push(data['B'])
+       //将A的邻居全部放入队列中
+      // 设置一个空的数组队列
+      let newArr = []
+      while (queen.length > 0) {
+        let person = queen.shift()
+        if (newArr.indexOf(person) < 0) {
+          if (person == 'Q') {
+            return person
+            return true
+          } else {
+            if (data[person]) {
+               // 如果说条件不匹配，就将person对应的邻居都加入数组中
+              queen = queen.concat(data[person])
+            }
+            console.log('queen',queen);
+            newArr.push(person)
+          }
+        }
+      }
+      return false
+    }
+    // console.log(sreachItem('A'));
+  </script>
+</body>
+</html>

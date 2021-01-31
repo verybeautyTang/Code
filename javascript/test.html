@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    let a = {
+      name: 1,
+      age:22
+    }
+    Object.defineProperty(a,'name', {
+        writeable: false,
+        value: 1
+      })
+      a.name = 2
+      console.log(a.name);
+      
+      function fn(n) {
+        if (n <= 1) {
+          return n
+        } else {
+          return fn(n-1) + fn(n-2)
+        }
+      }
+      console.log(fn(2));
+
+      function  allWay(n) {
+        let data = Math.pow(3,n+6)
+        // console.log('data', data);
+        let way = Math.pow(data,6) - Math.pow(data, 5)- Math.pow(data, 4)- Math.pow(data, 3)- Math.pow(data, 2)- data - 1
+        // console.log('way', way);
+        // console.log(Math.pow(data, n + 6) % way%data);
+        return (Math.pow(data, n + 6) / way)% data
+      }
+      console.log(allWay(4));
+
+      for (let index = 0; index < 611; index++) {
+        console.log(index,allWay(index));
+      }
+  </script>
+</body>
+</html>

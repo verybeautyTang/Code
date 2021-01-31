@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div></div>
+  <div></div>
+  <div></div>
+  <script>
+    // 数据合并
+    const home = ['mon','dad','baby']
+    const house = ['gentle','lady','child']
+    const all = [...home, ...house]
+    console.log(all)
+    //复制数据
+    const copy = [...home]
+    console.log(copy)
+
+    // 将伪数组转化为真数组
+
+    const rely = document.querySelectorAll('div')
+    console.log([...rely])
+  </script>
+</body>
+</html>

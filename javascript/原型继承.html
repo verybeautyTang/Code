@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function Person() {
+      this.name = function () {
+        console.log('my name is Person');
+      }
+    }
+    function Woman() {
+      this.age = function () {
+        console.log('my age is mimi');
+      }
+    }
+
+    Woman.prototype = new Person()
+    let mom = new Woman()
+    mom.age()
+    mom.name()
+    console.log(mom.__proto__);
+    console.log(Woman.prototype);
+    console.log(Woman.__proto__);
+    console.log(Person.__proto__);
+    console.log(Person.prototype
+    );
+  </script>
+</body>
+</html>

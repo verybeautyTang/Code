@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    let s1 = Symbol()
+    console.log(s1, typeof s1);
+    let s2 = Symbol('上书房')
+    let s3 = Symbol('上书房')
+    console.log(s2)
+    console.log(s3)
+    console.log(s2 == s3)
+    let s4 = Symbol.for('brother')
+    console.log(s4)
+  </script>
+</body>
+</html>

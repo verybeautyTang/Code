@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // time 和 timeEnd 一般放在一起用，传入一个参数用来标识起始位置用于统计时间:
+    console.time('t')
+    Array(900000).fill({}).forEach((v, index) => v.index = index)
+    console.timeEnd('t')
+  </script>
+</body>
+</html>

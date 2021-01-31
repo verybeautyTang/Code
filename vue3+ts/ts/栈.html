@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+<script>
+  function fun(name) {
+    console.log('hellom',name);
+    fun1(name)
+    fun2()
+    console.log('ok');
+  }
+  function fun1 (name) {
+    console.log('helo',name,name);
+  }
+  function fun2 () {
+    console.log('hhh');
+  }
+  fun('222')
+// 递归阶乘
+function tree(item) {
+  if (item ==1) {
+    return 1 
+  } else {
+    console.log('执行次数');
+    return item +'x'+ tree(item - 1)
+  }
+}
+console.log(tree(3));
+
+// 用递归实现累加
+function sum (arr) {
+  if (arr.length == 1) {
+    return arr
+  } else {
+    return parseInt(arr[0]) + parseInt((sum(arr.slice(1))))
+  }
+}
+const arr =  
+  console.log(sum([1, 2, 4, 5, 9, 22]));
+
+// 递归返回列表中最大的数值
+function listLast(arr) {
+  if (arr.length == 1) {
+    return arr[0]
+  }  else {
+    if(arr[0]>arr[1]) { //如果前面一个比后面一个更大，那么就将后面一个删除
+    return listLast(arr.filter(i => i !== arr[1]))
+    }
+    else {
+      return listLast(arr.slice(1)) //从下标为1开始浅拷贝一个数据
+    }
+  }
+}
+  console.log(listLast([8,4,12,6,98]));
+</script>
+</html>

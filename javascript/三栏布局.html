@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+    .layoutLrc div {
+      min-height: 100px;
+    }
+    .layoutFlex.div {
+      min-height: 100px;
+    }
+  </style>
+</head>
+<body>
+  <!-- 浮动布局 -->
+  <section class="layout float">
+    <style media="screen">
+      .layoutLrc .left {
+        float: left;
+        width: 300px;
+        background-color: yellow;
+      }
+      .layoutLrc .right {
+        float: right;
+        width: 300px;
+        background-color: pink;
+      }
+      .layoutLrc .center {
+        width: 100%;
+        background-color:plum;
+      }
+    </style>
+    <article class="layoutLrc">
+      <div class="left"></div>
+      <div class="right"></div>
+      <div class="center">
+        <h1>Center</h1>
+        这个是三栏布局哦三栏布局哦
+      </div>
+    </article>
+  </section>
+  <!-- flexBox布局 -->
+  <section class="layout flex">
+    <style media="screen">
+      .flex {
+        margin-top: 100px;
+      }
+      .layoutFlex {
+        width: 100%;
+        display: flex;
+      }
+      .layoutFlex div{
+        min-height: 100px;
+      }
+      .layoutFlex .left {
+        width: 300px;
+        background-color:blue;
+      }
+      .layoutFlex .center {
+        flex: 1;
+        background-color:red;
+      }
+      .layoutFlex .right {
+        width: 300px;
+        background-color:royalblue;
+      }
+    </style>
+    <article class="layoutFlex">
+      <div class="left"></div>
+      <div class="center">
+        你看我哈哈么
+      </div>
+      <div class="right"></div>
+    </article>
+  </section>
+  <!-- 定位布局 -->
+  <section class="layout positions">
+    <style media="screen">
+      .positions {
+        margin-top: 100px;
+      }
+      .positions article> div{
+        position: absolute;
+        height: 100px;
+      }
+      .positions article .left {
+        left:0px;
+        width: 300px;
+        background-color:black;
+      }
+      .positions article .center {
+        left: 300px;
+        right: 300px;
+        background-color: saddlebrown;
+      }
+      .positions article .right {
+        right: 0px;
+        width: 300px;
+        background-color:cadetblue;
+      }
+    </style>
+    <article class="layoutFlex">
+      <div class="left"></div>
+      <div class="center">
+        我现在用的是另外一种布局方式
+      </div>
+      <div class="right"></div>
+    </article>
+  </section>
+  <!-- 表格布局 -->
+  <section class="layout table">
+    <style media="screen">
+      .table {
+        margin-top: 200px;
+        display: table;
+        width:100%;
+      }
+  
+      .table article>div {
+        display: table-cell;
+        height: 100px;
+      }
+  
+      .table article .left {
+        width: 300px;
+        background-color: black;
+      }
+  
+      .positions article .center {
+        background-color: saddlebrown;
+      }
+  
+      .table article .right {
+        width: 300px;
+        background-color: cadetblue;
+      }
+    </style>
+    <article class="layoutFlex">
+      <div class="left"></div>
+      <div class="center">
+        <h1>表格布局</h1>
+        现在你用的是表格布局的方式
+      </div>
+      <div class="right"></div>
+    </article>
+  </section>
+    <section class="layout grid">
+      <style media="screen">
+        .grid {
+          margin-top: 100px;
+        }
+        .grid article{
+          display: grid;
+          width: 100%;
+          grid-template-rows: 100px;
+          grid-template-columns: 300px auto 300px;
+        }
+    
+        /* .grid article>div {
+          height: 100px;
+        } */
+    
+        .table article .left {
+          background-color: lawngreen;
+        }
+    
+        .grid article .center {
+          background-color: pink;
+        }
+    
+        .grid article .right {
+          background-color: black;
+        }
+      </style>
+      <article class="layoutFlex">
+        <div class="left"></div>
+        <div class="center">
+          <h1>网格布局</h1>
+          现在你用的是表格布局的方式
+        </div>
+        <div class="right"></div>
+      </article>
+    </section>
+</body>
+</html>

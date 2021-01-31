@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 手写一个原生的请求
+    const xhr = new XMLHttpRequest()
+    // // 获取get请求
+    //   xhr.open('GET', 'https://api.apiopen.top/getJoke')
+    //   // 发送请求
+    //   xhr.send()
+
+    // xhr.onreadystatechange = function () {
+    //   if (xhr.readyState == 4) {
+    //     if (xhr.status >= 200 && xhr.status <= 300) {
+    //       console.log(xhr.response)
+    //     }
+    //     else {
+    //       console.error(xhr.response)
+    //     }
+    //   }
+    // }
+
+    // promise 发送请求
+
+    const p = new Promise((resolve, reject) => {
+      // 获取get请求
+      xhr.open('GET', 'https://api.apiopen.top/getJoke1')
+      // 发送请求
+      xhr.send()
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4) {
+          if (xhr.status >= 200 && xhr.status <= 300) {
+            resolve(xhr.response)
+          }
+          else {
+            reject(xhr.response)
+          }
+        }
+      }      
+    })
+    p.then(value => {
+      console.log(value);
+    },reason =>{
+      console.log(reason);
+    })
+  </script>
+</body>
+</html>

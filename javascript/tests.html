@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        ul {
+            list-style: none;
+        }
+        .changeMore>li{
+            float: left;
+        }
+        .ison{
+            display: block;
+            text-decoration: none;
+            height: 30px;
+            line-height: 30x;
+            color: #000000;
+        }
+        .downList {
+            display: block;
+            text-decoration: none;
+            height: 21px;
+            color: blue;
+        }
+        .drop-down{
+            /*position: relative;*/
+            height: 20px;
+            overflow: hidden;
+        }
+        .drop-down-content{
+            padding: 0;
+            border: 1px solid #9a7676;
+        }
+
+        .changeMore h3{
+            font-size: 30px;
+            clear: both;
+        }
+        .drop-down-content li:hover a{
+            background-color:rgb(51, 51, 211);
+            color:#fff;
+        }
+        .changeMore .drop-down:hover{
+            overflow: visible;
+        }
+</style>
+</head>
+<body>
+    <ul class="changeMore">
+        <li class="drop-down"><a class="downList" href="#">修改</a>
+            <ul class="drop-down-content">
+                <li><a class="ison" href="javascript:;" data_item="50">总部-正品特价入口</a></li>
+                <li><a  class="ison" href="javascript:;" data_item="3">总部-副品特价入口</a></li>
+                <li><a class="ison" href="javascript:;" data_item="20">总部-样机政策入口</a></li>
+                <li><a class="ison" href="javascript:;" data_item="5">总部-专享特价入口</a></li>
+                <li><a class="ison" href="javascript:;" data_item="100">政策及分类</a></li>
+                <li><a class="ison" href="javascript:;" data_item="12">全部商品</a></li>
+                <li><a class="ison" href="javascript:;" data_item="0">商品及分类</a></li>
+                <li><a class="ison" href="javascript:;"  data_item="110">商品列表</a></li>
+            </ul>
+        </li>
+    </ul>
+</body>
+</html>

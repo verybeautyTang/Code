@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <p>come on baby you are my sunshine and baby love</p>
+</body>
+<script>
+  let reg =/ba/g // 全局搜索ba并返回
+
+  let regs =/[ba]by/i // 搜索第一个为bby或者aby，忽略大小写
+  let data = 'come on baby you are my sunshine and baby love'
+  console.log(reg.test(data));
+  console.log(regs.test(data));
+</script>
+</html>

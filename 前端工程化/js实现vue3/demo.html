@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<!-- <script src="./jquery-3.4.1.min.js"></script> -->
+
+<body>
+  <!-- 自定义元素 -->
+  <user-const open-type="true"></user-const>
+  <!-- 事件代理 -->
+  <ul class="list">
+    <li class="item" data-first="true">这是第一个</li>
+    <li class="item">2222</li>
+    <li class="item">three</li>
+    <li class="item" data-open="true">打开</li>
+    <li class="item">这是最后一个</li>
+  </ul>
+</body>
+<script>
+  // 自定义元素
+  class father extends HTMLElement {
+    constructor(props) {
+      super(props)
+      this.innerText = 'Hello World'
+      this.style.border = '1px solid blue'
+      this.style.padding = '4px'
+      this.style.borderRadius = '4px'
+    }
+  }
+  window.customElements.define('user-const', father)
+
+  // proxy
+  let data = {
+    name: 'beautyTang',
+    age: 18,
+    sex: 'girl'
+  }
+  data = new Proxy(data, {
+    set(target, ele, value, receiver) {
+      console.log('监听到', ele, '被修改了,由原来的：', target[ele], '改成了：', value);
+      // console.log(target);
+    }
+  })
+  document.onclick = function () {
+    data.sex = 'boy'
+  }
+  // 事件代理
+  let list = document.querySelector('.list')
+
+  let eventfn = function (ev) {
+    let target = ev.target
+    let dataset = target.dataset
+    console.log(target.dataset);
+    for (item in dataset) {
+      if (eventfn[item]) {
+        eventfn[item]({ obj: target, parent: this });
+      }
+    }
+  }
+  eventfn.first = function () {
+    console.log('点击了第一个，并且传了一些参数', arguments);
+  }
+  eventfn.open = function () {
+    console.log('点击了打开');
+  }
+  list.onclick = eventfn;
+</script>
+
+</html>

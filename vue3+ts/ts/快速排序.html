@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+   
+    function quicksort(arr) {
+       var less = []
+      var max = []
+      if (arr.length<2) {
+        return arr
+      } else {
+        let center = arr[0] 
+        for (let i = 1; i < arr.length; i++) {
+          if (arr[i]>center) {
+            max.push(arr[i])
+          } else {
+            less.push(arr[i])
+          }
+        } 
+        return quicksort(less).concat([center], quicksort(max))
+        
+      }
+    }
+    console.log(quicksort([7, 9, 35, 2, 3]));
+    // 快速排序的中心思想
+    //1、随便取一个数据，
+    // 2、在这个数组里面去判断比这个数据大的放在一个新数组中，比这个数据小的放在另一个新数组中，
+    // 3、如果数组只有一个或者没有的就直接返回即可
+
+    function print(arr) {
+      for (let i= 0;i<arr.length;i++) {
+      if (i== 0) {
+        console.log(arr[i]*2);
+      } else {
+        console.log(arr[i]);
+      }
+    }
+  }
+    print([1,2,3,4,5,67])
+  </script>
+</body>
+</html>

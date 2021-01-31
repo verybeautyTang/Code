@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    var person = new Object()
+    person.name = 'SomeBody'
+    console.log(person.name)
+
+
+    var item = '你好'
+    item.age = 11
+    console.log(item.age);
+
+    // 在基本类型中，如果一个变量复制另一个变量的时候，两个变量是互不影响的
+    var num = 10
+    var numCopy = num
+    console.log(numCopy);
+    console.log(num);
+    num = 20
+    console.log(numCopy);
+    console.log(num);
+
+    // 引用类型中，一个变量复制另一个变量，实际上指针指向的是同一个变量
+    var object = {
+      name:'hsy',
+      age: 22
+    }
+    var obj = object
+    console.log('obj',obj); //{name: "hsy", age: 22}
+    console.log('object',object); //{name: "hsy", age: 22}
+    obj.name ='wyx'
+    console.log('object',object); //{name: "wyx", age: 22}
+    console.log('obj',obj);//{name: "wyx", age: 22}
+
+    // 参数传递
+    // 1、基本类型参数
+    function sum (num) {
+      num += 10
+      return num
+    }
+    const count = 10
+    console.log(count)
+    console.log(sum(count)); 
+
+    // 2、引用类型参数
+    function setName (obj) {
+      obj.name = 'hsy'
+    }
+    var p = new Object()
+    console.log(p);
+    setName(p)
+    console.log(p);
+
+    // 3、引用类型2
+    function setDoubleName (obj) {
+      obj.name ='wyx'
+      obj = new Object()
+      obj.name = 'xtt'
+    }
+    let p1 = new Object()
+    console.log(p1);
+    setDoubleName(p1)
+    console.log('p1',p1); 
+
+    // 作用域链
+    var color = 'blue'
+    function changeColor () {
+      if (color == 'blue') {
+          color = 'red'
+      } else {
+        color = 'blue'
+      }
+    }
+    changeColor()
+    console.log(changeColor);
+    console.log('Color is now', color);
+    function doSomething(i) {
+      // console.log(i);
+      return i
+    }
+    // 在其它语言中，if语句之后会被销毁，但是在js中，js语句声明会将变量添加到当前的执行环境中
+    // 比如现在的执行环境是全局
+    if (true) {
+      var hsy ='222'
+    }
+    console.log(hsy);
+    // 没有作用域块
+    // 在块级作用域中，for创建的变量表达式只存在于循环的环境中
+    // 但是在js中，for语句创建的变量在循环执行完之后也依然会存在循环外部的执行函数之中
+    for (var index = 0; index <= 10; index++) {
+      doSomething(index)
+    }
+    console.log(index);
+// 这些都是因为var存在变量提升
+    // if (true) {
+    //   let wyx= 'wyx'
+    // }
+    // console.log(wyx);
+      for (let i = 0; i <= 10; i++) {
+        doSomething(i)
+      }
+      // console.log(i);
+// 使用var声明会自动添加到理他最接近的函数环境中。在函数内部，最接近的环境就是函数的局部环境
+// 如果初始化变量没有使用var声明，那么该变量被自动添加到全局中。
+// 在严格模式下，初始化为声明的变量会出错
+// console.log(counts, 11);
+function add (a,y) {
+  var sum = a + y
+  counts = a + y
+  return sum
+}
+// console.log(counts);
+console.log(add(1,2));
+var HH
+console.log(typeof undefined);
+console.log(typeof window.nice);
+
+
+// 查询标识符
+// 搜索过程从作用域链的前端开始，向上逐级查询与名字匹配的标识名。
+// 如果在局部环境中找到了标识符则停止搜索，如果在局部变量中没有找到则继续向上查找
+// 如果一直在全局中都没有找到，就说明在变量尚未声明。
+let pink = 'pink'
+function getPink() {
+  return pink
+}
+console.log(getPink());
+
+// 垃圾收集
+// js具有自动垃圾收集机制。在执行环境中会负责管理执行过程中使用的内存
+// js不再关心内存使用情况，所需的内存分配和回收都实现了自动管理。
+// 垃圾回收管理：找出那些不再继续使用的变量，然后释放其中的内存
+
+
+function data() {
+  // 【逻辑上来讲：永远不能释放进入环境的变量的内存】
+  //
+  var item = '' // 进入环境
+} // 离开环境
+
+// 内存管理
+function cretePerson(name) {
+  let newName = new Object()
+  newName.name =name
+  return newName
+}
+
+let globalName =  cretePerson('hsy')
+console.log(globalName);
+// 释放内存，也叫接触引用
+globalName = null;
+console.log(globalName);
+
+
+// 隐藏类和删除操作[共享隐藏类可以提高性能]
+
+function Article(name) {
+  this.title ='you are my sunshine'
+  this.name = name //可以先创建在补充
+}
+let a1 = new Article()
+let a2 = new Article('sss')
+
+// a2.name = 'Heshiyu'// 如果擅自添加了属性 就不叫共享一个隐藏类
+console.log(a1)
+console.log(a2);
+
+// 使用delete关键字会让他们不共享一个隐藏类[删除类操作]
+// delete a2.name
+// console.log(a2);
+
+ //最佳时间是把不想要的属性设置为null
+a2.name =  null
+console.log(a2);
+
+
+
+
+  // 内存泄漏
+  // 1、定时器
+  let sex ='girl'
+  setInterval(() => {
+    console.log(sex);
+  }, 1000); // 解决方法： 清除定时器
+  // 引起原因： 定时器一直在运行，回调函数里面的sex就会一直占用内存。所以外部声明的sex就不会被清理
+  // 2、意外声明全局变量
+  function name() {
+    name = 'hsy' // 解决办法： 在全局变量上面加上let、var、const关键字即可
+    // 引起内存泄露原因：如果name不声明，js默认是全局作用域，意味着是利用window.name
+    // 但window本身不会被清理，所以window.name也不会被清理，导致内存泄露
+  }
+  // 3、闭包引起
+  let counta = function() {
+    let name = 'wyx'
+    return function () {
+      console.log(name);
+      return name
+    }// 解决办法: 将count置为null
+    // 引起原因：因为在count中一直都在用name，所以不能清除name。如果name是一个比较大的数据的情况，内存泄漏就可能比较严重
+  }
+  
+  </script>
+</body>
+
+</html>

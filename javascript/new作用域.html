@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    fn('hsy')
+    function fn(name) {
+      this.name = name
+      console.log(this);
+      console.log(arguments);
+      console.log(name);
+    }
+    fn('hhh')
+    const ll = function () {
+      fn('hhh')
+      console.log('object');
+    }
+    ll()
+
+
+      function test() {
+          return function () {
+            console.log('yyy');
+          }
+        }
+        test()
+        // 一个函数的作用域是它定义时候的作用域而不是执行时候的作用域
+        // 闭包
+        function ff1() {
+          let data = 100
+          return function () {
+            console.log(data);
+          }
+        }
+        function ff2(fn) {
+          let data = 200
+          fn()
+        }
+        let f1 = ff1()
+        ff2(f1)
+
+        var i,a
+        for (i=0; i<10;i++) {
+          (function (i) { // 返回每个函数，如果不用这种方式的情况下，全部都会输出10
+            a = document.createElement('a')
+            a.innerHTML = i + '<br>' 
+            a.addEventListener('click', function (e) {
+              e.preventDefault()
+              alert(i)
+            })
+            document.body.append(a)
+          })(i)
+        }
+
+        // 闭包在实际中的应用
+        function isOnload() {
+          var _list =  []
+          return function (id) {
+            if (_list.indexOf(id) >= 0) {
+              return false
+            } else {
+              _list.push(id)
+              return true
+            }
+          } 
+        }
+        var fristId = isOnload()
+        console.log(fristId(10));
+        console.log(fristId(10));
+        console.log(fristId(20));
+        console.log(fristId(20));
+  </script>
+</body>
+</html>

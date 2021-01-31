@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    let p = new Promise (function(resolve, reject) {
+      setTimeout(() => {
+        let err = '回调失败'
+        reject(err)
+      }, 1000);
+    })
+    p.then ((data)=> {
+      console.error(data)
+    })
+
+    let p1 = new Promise(function (resolve, reject) {
+        setTimeout(() => {
+          let msg = '回调成功'
+          resolve(msg)
+        }, 1000);
+      })
+      p1.then((data) => {
+        console.warn(data)
+      })
+  </script>
+</body>
+</html>

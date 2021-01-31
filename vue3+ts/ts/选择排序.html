@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    const list = [1,3,45,75,43,345,23,14]
+    // 找到数组中最小的数值
+    function miniProps(arr) {
+      let mini = arr[0] // 存储数据中最小值
+      let mini_index = 0 //存储数据中最小值的下标
+      for (let o = 0; o < arr.length; o++) {
+        if (arr[o] <= mini) {
+          mini = arr[o]
+          mini_index = o 
+        }
+      }
+      return mini_index
+    }
+    function changeModal(arr) {
+      let newArr = [] //设置一个新的数组
+      var all = JSON.parse(JSON.stringify(arr))
+      for(let i = 0;i <arr.length; i++) {
+        var mini = miniProps(all)
+        newArr.push(all.pop(all[mini]))
+      }
+      console.log(newArr);
+      return newArr
+    }
+    changeModal(list)
+  </script>
+</body>
+</html>

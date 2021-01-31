@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function * gen () {
+      yield 'hello';
+      yield 'nihao';
+      yield 'pengdu'
+    }
+    let iterator = gen () 
+    console.log(iterator.next())
+    console.log(iterator.next())
+    console.log(iterator.next())
+    console.log(iterator.next())
+    for (let v of gen()) {
+      console.log(v)
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function miniSize(arr) {
+      let miniData = arr[0] // 假设第一个为最小数字
+      let miniIndex = 0 // 最小数值的索引
+      for (let index = 0; index <=arr.length; index++) {
+        if (miniData>arr[index]) { // 如果有其它的数据比最小数要小
+          miniData = arr[index] // 替换最小值
+          miniIndex = index // 替换最小值索引
+        }
+      }
+      return miniIndex // 返回最小值
+    }
+    function arrSize(arr) {
+      let arrLength = arr.length // 拿到arr的长度
+      let newArr = [] // 设置一个新的数组
+      for (let i = 0; i < arrLength; i++) {
+        let mini = miniSize(arr) // 拿到arr中的最小值
+        newArr.push(arr[mini]) // 新的数组中push最小值
+        arr.splice(mini,1) // 删除最小值
+      }
+      return newArr
+    }
+    let list = [9,8,7,6,5,4,3,2,1]
+    console.log(arrSize(list));
+  </script>
+</body>
+</html>

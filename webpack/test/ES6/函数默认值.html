@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+</body>
+<script>
+  // 1:函数设置默认值，一般放在最后一个位置上
+  function add( a,b,c=10 ) {
+    return a+b+c
+  }
+  console.log(add(1,2))
+  // 2、函数设置的默认值，可以用解构赋值去代替
+  function demo ({name,nickName,password}) {
+    console.log(name)
+    console.log(nickName)
+    console.log(password);
+  }
+  demo({
+    name:'222',
+    nickName: 'beautyTang',
+    password:'222222'
+  })
+</script>
+</html>

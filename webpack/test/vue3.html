@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.bootcdn.net/ajax/libs/vue/0.12.0/vue.js"></script>
+</head>
+<body>
+  <div id="app">{{a}}{{b}}</div>
+</body>
+<script>
+
+  var vm = new Vue ({
+    el:'#app',
+    data : {
+      a:1
+    }
+  })
+  // 可以触发响应
+  vm.a = 2
+  // data中不存在b，不能厨房响应
+  vm.b = 1
+  console.log(vm.$set)
+  vm.$set(vm.data, 'b', 222)
+</script>
+</html>

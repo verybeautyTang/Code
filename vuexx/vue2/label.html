@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+    <script src="https://cdn.bootcss.com/vue/2.6.10/vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <form action="" @submit.prevent="clickw">
+                <label for="">姓名</label>
+                <input type="text" v-model="name">
+                <label for="">密码</label>
+                <input type="password" v-model="psd">
+                <label for="">单选</label>
+                <input type="radio" name="sex" value="女" v-model="male">女
+                <input type="radio" name="sex" value="男"  v-model="male">男
+                <label for="">多选</label>
+                <input type="checkbox" name="hobby">足球
+                <input type="checkbox" name="hobby">篮球
+                <input type="checkbox" name="hobby">乒乓
+                
+                <!-- <textarea name="desc"></textarea> -->
+               <input type="submit" name="" id="">
+        </form>
+       
+      
+    </div>
+    <script>
+        var vm=new Vue({
+            el:'#app',
+            data:{
+                name:'',
+                psd:'',
+                male:''
+
+            },
+            methods:{
+                clickw(){
+                    console.log('hello');
+                }
+            }
+
+        })
+    </script>
+</body> 
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .hero {
+  height: 100vh;
+  background-color: pink;
+}
+
+.hero__thumb {
+  width: 400px;
+  height: 300px;
+  object-fit: contain; /*属性指定元素的内容应该如何去适应指定容器的高度与宽度。*/
+}
+@media (min-height: 700px) {
+  .hero {
+    height: 100vh;
+  }
+  </style>
+</head>
+<body>
+  <div class="hero">
+    <div class="hero__wrapper">
+      <div class="hero__content">
+        <!-- content -->
+      </div>
+      <img class="hero__thumb" src="./logo.png" alt="" />
+    </div>
+  </div>
+</body>
+</html>

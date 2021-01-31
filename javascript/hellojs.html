@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script lang="ts">
+    // 1、undefined类型
+    var message 
+    if (message == undefined) {
+      console.log('message',typeof(message));
+    }
+    console.log('m',m);
+    // 变量提升
+    var m
+    // 返回undefined， 但是实际上并没有真正的操作
+    console.log('object',typeof(object));
+    // console.log(object); 报错 object is not defined
+
+
+    // null
+    let car = null
+    // null从逻辑的角度来说是一个空指针，所以用typeof会返回object
+    console.log('car',car, typeof(car));
+    console.log(undefined == null);
+    // 如果定义的变量用于保存对象，那么初始化最好为null而不是其它的数据
+    function example() {
+      if (car !== null) {
+        console.log('someThing Like You');
+      }
+    }
+
+    // boolean
+    let found = true
+    let lost = false
+    let img = 'True' // 这个是一个标识符并不是一个bool类型的数据
+
+    let changeBool = 'you are my super star'
+    let boolChange = Boolean(changeBool)
+    console.log(boolChange);
+
+    // Number类型
+    let int1 = 90.0
+    console.log(int1);
+    console.log(Number.MAX_VALUE); //最大的数值
+    console.log(Number.MIN_VALUE); // 最小的数值
+
+
+    // isNAN
+    console.log(isNaN(29));
+    console.log(isNaN('222'));
+    console.log(isNaN('message'));
+    console.log(isNaN(false));
+    console.log(isNaN('true'));
+  </script>
+</body>
+</html>
