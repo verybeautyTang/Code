@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // document.cookie = 'name = hsy' // cookie的名称和值是必备的，但是不需要在名称或者值当中添加字符，所以可以用encodeURIComponent进行编码
+    // document.cookie = encodeURIComponent('name') + '=' + encodeURIComponent('hsy')
+    // 如果要创建额外的信息,只需要追加相同格式的数据即可 
+    document.cookie = encodeURIComponent('name') + '=' + encodeURIComponent('hsy')+ "; domain =.baidu.com;path = '/'"
+
+    // 对cookie的读写删除
+    class CookieItem {
+      static getName (name) {
+        let cookieName = `${encodeURIComponent(name)} =`,
+        cookieStart = document.cookie.indexOf(cookieName),
+        cookieValue = null;
+        if (cookieStart > -1) {
+          let cookieEnd = document.cookie.indexOf(';',cookieStart);
+          if (cookieEnd == -1) {
+            cookieEnd = document.cookie.length
+          }
+          cookieValue = decodeURIComponent(document.cookie.substring(cookieStart+cookieName.length,cookieEnd))
+        } 
+        return cookieValue
+      }
+      static setName (name, value, expires, path, domain, secure) {
+        let cookText = `${encodeURIComponent(name)} = ${encodeURIComponent(value)}`
+        if(expires instanceof Date) {
+          cookieText += `; expires = ${expires.toGMTString()}`
+        }
+        if (path) {
+          cookieText += `; path = ${path}`
+        }
+        if (domain) {
+          cookieText += `; domain = ${domain}`
+        }
+        if (secure) {
+          cookieText += `; secure = ${secure}`
+        }
+        document.cookie = cookieText
+      }
+      static unset(name, path, domain, secure) {
+        CookieItem.setName(name, "", newDate(0),path, domain, secure)
+      }
+    }
+  </script>
+</body>
+</html>

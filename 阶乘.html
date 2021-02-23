@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    "use strict"
+    function add(n) {
+      if (n<=2) {
+        return n
+      } else {
+        return n *add(n-1)
+      }
+    }
+    // 解耦写法
+    // function adding(n) {
+    //   if (n <= 2) {
+    //     return n
+    //   } else {
+    //     return n * arguments.callee(n-1)
+    //   }
+    // }
+    // 在严格模式下，arguments.callee会出错
+7
+    console.log('add', add(5));
+    // console.log('adding', adding(5));
+    console.log('addes', addes(5));
+  </script>
+</body>
+</html>

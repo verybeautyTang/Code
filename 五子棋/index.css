@@ -1,0 +1,115 @@
+        canvas {
+            display: block;
+            margin: 50px auto;
+            box-shadow: -2px -2px 2px #efefef, 5px 5px 5px #b9b9b9;
+            background-image: url(bg.png);
+        }
+
+        .buttonGroup {
+            width: 500px;
+            margin: 50px auto;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .buttonGroup div:hover {
+            cursor: pointer;
+        }
+
+        .canvasRrestart {
+            text-align: center;
+            background-color: #45c01a;
+            border-radius: 5px;
+        }
+
+        .canvasrevert,
+        .removeRevert {
+            text-align: center;
+            background-color: #b9b9b9;
+            border-radius: 5px;
+        }
+
+        .canvasRrestart>span,
+        .canvasrevert>span,
+        .removeRevert>span {
+            display: inline-block;
+            padding: 10px 20px;
+            color: #fff;
+        }
+         div#domChess {
+      display: flex;
+      width: 450px;
+      height: 450px;
+      padding: 0px;
+      display: block;
+      margin: 50px auto 0px auto;
+      box-shadow: -2px -2px 2px #efefef, 5px 5px 5px #b9b9b9;
+      background-image: url(bg.png);
+      align-items: center;
+      justify-content: center;
+    }
+
+    div.chessArea {
+      display: block;
+      width: 480px;
+      height: 450px;
+      padding: 0px;
+    }
+
+    .chessArea table {
+      border-collapse: collapse;
+      position: relative;
+    }
+
+    .chessAreaItem {
+      width: 30px;
+      height: 30px;
+      box-sizing: border-box;
+      margin: 0px;
+      top: 0px;
+      bottom: 0px;
+
+    }
+
+    .info {
+      width: 450px;
+      height: 30px;
+      color: red;
+      font-size: 15px;
+      padding-left: 20px;
+      margin: 0px auto;
+      line-height: 30px;
+      box-sizing: border-box;
+    }
+
+    .buttonGroup {
+      width: 500px;
+      margin: 20px auto;
+      display: flex;
+      justify-content: space-around;
+    }
+
+    .buttonGroup div:hover {
+      cursor: pointer;
+    }
+
+    .domRevert {
+      text-align: center;
+      background-color: #45c01a;
+      border-radius: 5px;
+    }
+
+    .domRevert,
+    .removeRevert {
+      text-align: center;
+      background-color: #b9b9b9;
+      border-radius: 5px;
+    }
+
+    .domRevert>span,
+    .domRevert>span,
+    .removeRevert>span {
+      display: inline-block;
+      padding: 10px 20px;
+      color: #fff;
+    }
